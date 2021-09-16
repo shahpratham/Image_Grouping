@@ -14,7 +14,7 @@ for i in range(k):
   cluster[i][0]= p[r][0]
   cluster[i][1]= p[r][1]
   c=0
-while c < n:
+for c in range(n):
   for i in range(n): #for finding which point belongs to which cluster
     min_dis= sys.maxsize
     for j in range(k):
@@ -34,4 +34,3 @@ while c < n:
   for i in range(k):
     cluster[i][0] = sum[j][0]/sum[j][2] #storing new cluster points
     cluster[i][1] = sum[j][1]/sum[j][2]
-  c-=1
