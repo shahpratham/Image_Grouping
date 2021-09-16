@@ -34,3 +34,6 @@ for c in range(n):
   for i in range(k):
     cluster[i][0] = sum[j][0]/sum[j][2] #storing new cluster points
     cluster[i][1] = sum[j][1]/sum[j][2]
+
+  for i in range(k):
+    print(str(cluster[i][0]) +" "+ str(cluster[i][1]))
