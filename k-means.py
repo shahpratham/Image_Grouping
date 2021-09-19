@@ -10,10 +10,10 @@ for i in range(n):
 k = int(input("Enter no. of clusters"))
 cluster = np.zeros(2*k).reshape(k,2)
 for i in range(k):
-  r= random.randint(0,n)
+  r= random.randint(0,(n-1))
   cluster[i][0]= p[r][0]
   cluster[i][1]= p[r][1]
-  c=0
+t=0
 for c in range(n):
   for i in range(n): #for finding which point belongs to which cluster
     min_dis= sys.maxsize
@@ -32,8 +32,11 @@ for c in range(n):
         count+=1
     sum[j][2]=count
   for i in range(k):
-    cluster[i][0] = sum[j][0]/sum[j][2] #storing new cluster points
-    cluster[i][1] = sum[j][1]/sum[j][2]
-
-  for i in range(k):
-    print(str(cluster[i][0]) +" "+ str(cluster[i][1]))
+    if(sum[i][2]!=0):
+      cluster[i][0] = sum[i][0]/sum[i][2] #storing new cluster points
+      cluster[i][1] = sum[i][1]/sum[i][2]
+      print("new cluster at "+str(t)+" iterations is "+str(cluster[i][0]) +" "+ str(cluster[i][1]))
+  t+=1
+print("There were "+ str(t)+" iterations")
+for i in range(k):
+  print(str(cluster[i][0]) +" "+ str(cluster[i][1]))
