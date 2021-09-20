@@ -2,41 +2,52 @@ import numpy as np
 import random
 import math
 import sys
-n = int(input("Enter no. of feature points ")) #code is made for 2d
-p = np.zeros(3*n).reshape(n,3) #storing n points x,y dimension and their respective cluster
+d = int(input("Enter no. of dimensions "))
+n = int(input("Enter no. of feature points "))
+p = np.zeros((d+1)*n).reshape(n,(d+1))
 for i in range(n):
-  for j in range(2):
+  for j in range(d):
     p[i][j]=int(input("Enter value"))
+    print(p)
 k = int(input("Enter no. of clusters"))
-cluster = np.zeros(2*k).reshape(k,2)
+cluster = np.zeros(d*k).reshape(k,d)
+random_no = np.full(k,-1)
 for i in range(k):
   r= random.randint(0,(n-1))
-  cluster[i][0]= p[r][0]
-  cluster[i][1]= p[r][1]
-t=0
-for c in range(n):
-  for i in range(n): #for finding which point belongs to which cluster
+  while r in random_no:
+    r= random.randint(0,(n-1))
+  random_no[i] = r
+  for j in range(d):
+    cluster[i][j]= p[r][j]
+  print(str(cluster[i][0]) +" "+ str(cluster[i][1]))
+def distance():
+  dis=0
+  for i in range(n):
     min_dis= sys.maxsize
     for j in range(k):
-      d= math.sqrt( (p[i][0] - cluster[j][0])**2 + (p[i][1] - cluster[j][1])**2 )
-      if(d<min_dis): #finding minimum distance
-        min_dis= d
-        p[i][2]=j #nearest cluster
-  sum = np.zeros(3*k).reshape(k,3)
+      for q in range(d-1):
+        dis+= (p[i][q] - cluster[j][q])**2
+      dis = math.sqrt(dis)
+      if(dis < min_dis): #finding minimum distance
+        min_dis= dis
+        p[i][d-1]=j #nearest cluster
+t=0
+for c in range(n):
+  distance()
+  sum = np.zeros((d+1)*k).reshape(k,(d+1))
   for j in range(k): #finding new k cluster points
     count =0
     for i in range(n):
-      if(p[i][2] == j):
-        sum[j][0]+=p[i][0]
-        sum[j][1]+=p[i][1]
+      if(p[i][d-1] == j):
+        for q in range(d):
+          sum[j][q]+=p[i][q]
         count+=1
-    sum[j][2]=count
+    sum[j][d-1]=count
   for i in range(k):
-    if(sum[i][2]!=0):
-      cluster[i][0] = sum[i][0]/sum[i][2] #storing new cluster points
-      cluster[i][1] = sum[i][1]/sum[i][2]
-      print("new cluster at "+str(t)+" iterations is "+str(cluster[i][0]) +" "+ str(cluster[i][1]))
+    if(sum[i][d-1]!=0):
+      for q in range(d):
+        cluster[i][q] = sum[i][q]/sum[i][d-1] #storing new cluster points  
   t+=1
-print("There were "+ str(t)+" iterations")
 for i in range(k):
-  print(str(cluster[i][0]) +" "+ str(cluster[i][1]))
+  for q in range(0,d-1,2):
+          print("Cluster is "+str(cluster[i][q]) +" "+ str(cluster[i][q+1]))
