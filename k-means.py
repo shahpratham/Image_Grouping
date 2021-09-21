@@ -5,10 +5,12 @@ import sys
 d = int(input("Enter no. of dimensions "))
 n = int(input("Enter no. of feature points "))
 p = np.zeros((d+1)*n).reshape(n,(d+1))
+p
 for i in range(n):
   for j in range(d):
     p[i][j]=int(input("Enter value"))
-    print(p)
+print(p)
+print(p)
 k = int(input("Enter no. of clusters"))
 cluster = np.zeros(d*k).reshape(k,d)
 random_no = np.full(k,-1)
@@ -19,35 +21,54 @@ for i in range(k):
   random_no[i] = r
   for j in range(d):
     cluster[i][j]= p[r][j]
-  print(str(cluster[i][0]) +" "+ str(cluster[i][1]))
+  for q in range(d):
+    print(str(cluster[i][q]), end=" ")
+  print("")
 def distance():
   dis=0
   for i in range(n):
     min_dis= sys.maxsize
     for j in range(k):
-      for q in range(d-1):
+      for q in range(d):
         dis+= (p[i][q] - cluster[j][q])**2
       dis = math.sqrt(dis)
       if(dis < min_dis): #finding minimum distance
         min_dis= dis
-        p[i][d-1]=j #nearest cluster
+        p[i][d]=j #nearest cluster
 t=0
+prev_cluster = np.full((d*k),sys.float_info.max).reshape(k,d)
 for c in range(n):
-  distance()
-  sum = np.zeros((d+1)*k).reshape(k,(d+1))
-  for j in range(k): #finding new k cluster points
-    count =0
-    for i in range(n):
-      if(p[i][d-1] == j):
-        for q in range(d):
-          sum[j][q]+=p[i][q]
-        count+=1
-    sum[j][d-1]=count
-  for i in range(k):
-    if(sum[i][d-1]!=0):
+  flag=0
+  for j in range(k):
+    for q in range(d):
+      difference = (cluster[j][q] - prev_cluster[j][q])/cluster[j][q]
+      print("at "+str(t)+" iteration, difference is "+str(difference))
+      if (abs(difference) < 0.01 ):
+        continue
+      else:
+        flag=1
+        break
+  if flag == 0:
+    break
+  else:
+    distance()
+    sum = np.zeros((d+1)*k).reshape(k,(d+1))
+    for i in range(k):
       for q in range(d):
-        cluster[i][q] = sum[i][q]/sum[i][d-1] #storing new cluster points  
+        prev_cluster[i][q] = cluster[i][q]
+    print(prev_cluster)
+    for j in range(k): #finding new k cluster points
+      count =0
+      for i in range(n):
+        if(p[i][d] == j):
+          for q in range(d):
+            sum[j][q]+=p[i][q]
+          count+=1
+      sum[j][d]=count
+    for i in range(k):
+      if(sum[i][d]!=0):
+        for q in range(d):
+          cluster[i][q] = sum[i][q]/sum[i][d] #storing new cluster points
+    print(cluster)
   t+=1
-for i in range(k):
-  for q in range(0,d-1,2):
-          print("Cluster is "+str(cluster[i][q]) +" "+ str(cluster[i][q+1]))
+print(cluster, t)
