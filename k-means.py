@@ -4,11 +4,11 @@ import random
 import math
 import sys
 import os
-directory = "Clusters"
-parent_dir = os.getcwd()
-print(parent_dir)
-path = os.path.join(parent_dir, directory)
-os.mkdir(path) #Making cluster directory for storing all clusters
+# directory = "Clusters"
+# parent_dir = os.getcwd()
+# print(parent_dir)
+# path = os.path.join(parent_dir, directory)
+# os.mkdir(path) #Making cluster directory for storing all clusters
 d = int(input("Enter no. of dimensions "))
 n = int(input("Enter no. of feature points "))
 p = np.zeros((d+1)*n).reshape(n,(d+1))
