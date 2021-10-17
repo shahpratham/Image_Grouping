@@ -19,7 +19,7 @@ Segregates images using feature extraction and Clustering algorithm
 - [License](https://github.com/saharshleo/readmeTemplateEklavya20#license)
 
 ## About The Project
-![Demo](assets/demo.mp4)
+![Demo](assets/Demo.mp4)
 
 ## Tech Stack
 
