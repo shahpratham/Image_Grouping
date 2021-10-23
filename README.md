@@ -92,7 +92,8 @@ cd /path/to/TestDAta
 
 > Did this for 101 images and tested on Lenovo Legion 5(Ryzen 5 4600H) and got accuracy close to 80%.
 
-https://user-images.githubusercontent.com/82367556/137674015-5a2f7481-c7fd-40ba-8719-b2d03f582475.mp4
+https://user-images.githubusercontent.com/82367556/138553107-c3c90182-79d6-4d36-b1d3-16a27a6b8b86.mp4
+
 
 ## Future work
 
