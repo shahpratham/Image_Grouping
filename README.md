@@ -22,20 +22,35 @@ Segregates images using feature extraction and Clustering algorithm
 
 ## About The Project
 
-## Aim
+### Aim
 
 This project aims at creating an image grouping algorithm. The algorithm should be able to group similar images on the basis of extracted features.
 
-## Description
+### Description
 
 We have used ORB algorithm for extracting features and Scikit K-means clustering algorithm to clusterize images. So it reads images from a folder and applies ORB to all images to give its descriptors and finds optimum no. of groups(K) then applies K-means on descriptors and paste images to their respective cluster folder. For more info refer our [report](report/report.pdf)
 
 ![Image Grouping](assets/overview.png)
 
-## Tech Stack
+### Tech Stack
 
 - [OpenCV](https://opencv.org/)
 - [Scikit Learn](https://scikit-learn.org/stable/)
+
+### File Structure
+
+```bash
+.📦
+├── 📂assets																		
+│   ├── 📜demo.mp4
+│   └── 📜overview.png
+├── 📜kmeansUsingOpenCV.py
+├── 📜kmeansUsingSkLearn.py
+├── 📜LICENSE
+├── 📜README.md
+└── 📂report
+    └── 📜report.pdf
+```
 
 ## Getting Started
 
