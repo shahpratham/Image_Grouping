@@ -41,14 +41,14 @@ We have used ORB algorithm for extracting features and Scikit K-means clustering
 
 ```bash
 .📦
-├── 📂assets																		
-│   ├── 📜demo.mp4
-│   └── 📜overview.png
-├── 📜kmeansUsingOpenCV.py
-├── 📜kmeansUsingSkLearn.py
-├── 📜LICENSE
-├── 📜README.md
-└── 📂report
+├── 📂assets				# contains images and video			
+│   ├── 📜demo.mp4												 
+│   └── 📜overview.png									  
+├── 📜kmeansUsingOpenCV.py		# code with openCV kmeans 
+├── 📜kmeansUsingSkLearn.py		# code with SkLearn kmeans
+├── 📜LICENSE				# MIT license
+├── 📜README.md				
+└── 📂report				# Project report
     └── 📜report.pdf
 ```
 
