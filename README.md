@@ -1,4 +1,4 @@
-# IMAGE_GROUPING
+# Image_Grouping
 
 Segregates images using feature extraction and Clustering algorithm
 
@@ -13,6 +13,7 @@ Segregates images using feature extraction and Clustering algorithm
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
 - [Usage](#usage)
+- [Theory and Approach](#theory-and-approach)
 - [Results and Demo](#results-and-demo)
 - [Future Work](#to-dos)
 - [Troubleshooting](#troubleshooting)
@@ -94,7 +95,7 @@ python kmeansUsingSkLearn.py
 cd /path/to/TestDAta
 ```
 
-### THEORY AND APPROACH:
+### Theory and Approach
 
 Select assorted images of single label test subjects like for example cats & cars. Apply the clustering algorithm to find images of cats in one folder & cars in a seperate folder. It reads images from a folder and applies ORB to all images to give its descriptors and find optimum value of k and applies K-means on descriptors and paste images to their respective cluster folder.
 
